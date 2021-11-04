@@ -1,8 +1,9 @@
-﻿using System;
+﻿using MediatR;
+using System;
 
-namespace Todos.Domain
+namespace Todos.Application.Todos.Commands.UpdateTodo
 {
-    public class Todo
+    class UpdateTodoCommand : IRequest
     {
         public Guid UserId { get; set; }
         public Guid Id { get; set; }
@@ -10,7 +11,6 @@ namespace Todos.Domain
         public string Description { get; set; }
         public bool isCompleted { get; set; }
         public DateTime? ReminderDate { get; set; }
-        public DateTime CreationDate { get; set; }
-        public DateTime? EditDate { get; set; }
+        
     }
 }
