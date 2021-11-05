@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Todos.Domain
+namespace Todos.Application.Todos.TodoCommandDto
 {
-    public class Todo
+    public class UpdateTodoDto
     {
         public Guid UserId { get; set; }
         public Guid Id { get; set; }
@@ -10,7 +14,5 @@ namespace Todos.Domain
         public string Description { get; set; }
         public bool IsCompleted { get; set; }
         public DateTime? ReminderDate { get; set; }
-        public DateTime CreationDate { get; set; }
-        public DateTime? EditDate { get; set; }
     }
 }

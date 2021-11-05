@@ -12,7 +12,7 @@ using Todos.Domain;
 
 namespace Todos.Application.Todos.Commands.UpdateTodo
 {
-    class UpdateTodoCommandHandler : IRequestHandler<UpdateTodoCommand>
+    public class UpdateTodoCommandHandler : IRequestHandler<UpdateTodoCommand>
     {
         private readonly ITodosDbContext _dbContext;
 
@@ -22,8 +22,8 @@ namespace Todos.Application.Todos.Commands.UpdateTodo
         public async Task<Unit> Handle(UpdateTodoCommand request, CancellationToken cancellationToken)
         {
             var entity =
-                await _dbContext.Todos.FirstOrDefaultAsync(note =>
-                    note.Id == request.Id, cancellationToken);
+                await _dbContext.Todos.FirstOrDefaultAsync(todo =>
+                    todo.Id == request.Id, cancellationToken);
 
             if (entity == null || entity.UserId != request.UserId)
             {
@@ -32,7 +32,7 @@ namespace Todos.Application.Todos.Commands.UpdateTodo
 
             entity.Title = request.Title;
             entity.Description = request.Description;
-            entity.isCompleted = request.isCompleted;
+            entity.IsCompleted = request.IsCompleted;
             entity.ReminderDate = request.ReminderDate;
             entity.EditDate = DateTime.Now;
 

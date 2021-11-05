@@ -25,7 +25,7 @@ namespace Todos.Application.Todos.Commands.CreateTodo
                 CreationDate = DateTime.Now,
                 EditDate = null,
                 ReminderDate = request.ReminderDate,
-                isCompleted = false,
+                IsCompleted = false,
                 Id = Guid.NewGuid()
             };
             await _dbContext.Todos.AddAsync(todo, cancellationToken);
