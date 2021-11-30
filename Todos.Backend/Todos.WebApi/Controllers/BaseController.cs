@@ -15,7 +15,7 @@ namespace Todos.WebApi.Controllers
             _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
 
         internal Guid UserId => !User.Identity.IsAuthenticated
-            ? Guid.Empty
+            ? new Guid("3fa85f64-5717-4562-b3fc-2c963f66afa6")
             : Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
     }
 }

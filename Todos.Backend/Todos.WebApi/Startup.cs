@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Todos.Application;
+using Todos.Application.Common.Exceptions;
 using Todos.Infrastructure.Persistence;
 
 namespace Todos.WebApi
@@ -46,12 +47,10 @@ namespace Todos.WebApi
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Todos.WebApi v1"));
             }
 
+            app.UseCustomExceptionHandler();
             app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
+            app.UseRouting();        
+            app.UseCors("All");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
